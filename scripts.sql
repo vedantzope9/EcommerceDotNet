@@ -19,6 +19,7 @@
 		OrderId INT ,
 		ProductId INT ,
 		Quantity INT NOT NULL,
+        LineTotal DECIMAL NOT NULL,
         FOREIGN KEY(OrderId) REFERENCES Orders(OrderId),
         FOREIGN KEY(ProductId) REFERENCES Products(ProductId)
     )
