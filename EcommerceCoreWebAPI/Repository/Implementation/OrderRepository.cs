@@ -18,11 +18,14 @@ namespace EcommerceCoreWebAPI.Repository.Implementation
         public async Task AddAsync(Order order)
         {
             await _context.orders.AddAsync(order);
+            await SaveChangesAsync();
         }
 
         public async Task<List<Order>> GetAllAsync()
         {
-            return await _context.orders.ToListAsync();
+            return await _context.orders
+                            .Include(o=>o.orderitems)
+                            .ToListAsync();
         }
 
         public async Task<Order?> GetByIdAsync(int orderId)
