@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EcommerceCoreWebAPI.Models;
 
-public partial class orderitem
+public partial class OrderItem
 {
     public int OrderItemId { get; set; }
 
@@ -13,7 +13,7 @@ public partial class orderitem
 
     public int Quantity { get; set; }
 
-    public virtual order? Order { get; set; }
+    public virtual Order? Order { get; set; }
 
-    public virtual product? Product { get; set; }
+    public virtual Product? Product { get; set; }
 }

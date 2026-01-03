@@ -17,11 +17,11 @@ public partial class AppDbContext : DbContext
     {
     }
 
-    public virtual DbSet<order> orders { get; set; }
+    public virtual DbSet<Order> orders { get; set; }
 
-    public virtual DbSet<orderitem> orderitems { get; set; }
+    public virtual DbSet<OrderItem> orderitems { get; set; }
 
-    public virtual DbSet<product> products { get; set; }
+    public virtual DbSet<Product> products { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -33,7 +33,7 @@ public partial class AppDbContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<order>(entity =>
+        modelBuilder.Entity<Order>(entity =>
         {
             entity.HasKey(e => e.OrderId).HasName("PRIMARY");
 
@@ -47,7 +47,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.TotalAmount).HasPrecision(15, 2);
         });
 
-        modelBuilder.Entity<orderitem>(entity =>
+        modelBuilder.Entity<OrderItem>(entity =>
         {
             entity.HasKey(e => e.OrderItemId).HasName("PRIMARY");
 
@@ -64,7 +64,7 @@ public partial class AppDbContext : DbContext
                 .HasConstraintName("orderitems_ibfk_2");
         });
 
-        modelBuilder.Entity<product>(entity =>
+        modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(e => e.ProductId).HasName("PRIMARY");
 
